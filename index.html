@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Master To-Do List</title>
+    <link rel="stylesheet" href="styles/body.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="header-title">To Do List</h1>
+        <div class="header-links">
+            <a href="#">Primary Tasks (0)</a>
+            <a href="#">Completed Tasks (0)</a>
+        </div>
+    </div>
+    <div class="page-container">
+        <div class="space30"></div>
+        <div class="todo-input-container">
+            <input type="text" id="todo-input-text" placeholder="New Task">
+            <button id="todo-enter">Add</button>
+        </div>
+        <div class="todo-list-container">
+            <div class="todo-list todo-priority">
+                <h3>Tasks to Complete</h3>
+                <div class="task-todo task">Program a dynamic list</div>
+                <div class="task-todo task">Program a dynamic list</div>
+            </div>
+            <div class="todo-list todo-completed">
+                <h3>Tasks Completed</h3>
+                <div class="task-complete task">Start an HTML page</div>
+                <div class="task-complete task">Start an HTML page</div>
+                <div class="task-complete task">Start an HTML page</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
