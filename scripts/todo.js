@@ -21,14 +21,14 @@ function buildTaskItem(taskString, taskID, completed = false) {
         );
     taskAdded.className = "task-todo task";
     taskAdded.append(taskString, updateIcon, trashIcon)
-    taskAdded.taskID = taskID;
+    taskAdded.setAttribute("taskID", taskID);
 
     return taskAdded;
 }
 
 function initTaskData() {
     for (task in taskPrimaryList) {
-        $("#todo-priority").append(buildTaskItem(taskPrimaryList[task], task));
+        $("#todo-priority").append(buildTaskItem(taskPrimaryList[task], task)).show(300);
     };
     for (task in taskCompletedList) {
         $("#todo-completed").append(buildTaskItem(taskCompletedList[task], task, true));
@@ -52,18 +52,26 @@ $(document).ready(function () {
         $("#todo-input-text").val("");
     })
 
+    $(document).on('click', '.trash-icon', function () {
+        // MUST grab attribute BEFORE being hidden
+        console.log($(this).parent().attr("taskID"))
+        $(this).parent().hide(300, function () {
+            $(this).remove();
+        });
+
+    })
+
+
     initTaskData();
 
 })
+
 
 $(document).on('click', '.complete-icon', function () {
     alert("Complete this!");
 })
 
 
-$(document).on('click', '.trash-icon', function () {
-    alert("Delete this!");
-})
 
 
 $(document).on('click', '.undo-icon', function () {

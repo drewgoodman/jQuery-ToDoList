@@ -80,7 +80,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 30px 30px;
     grid-column-gap: 10px;
-    transition: .4s all ease-in-out;
+    transition: .3s background-color ease-in-out;
     border: 2px solid transparent;
 
 }
@@ -91,7 +91,7 @@ h1 {
 
 .icon {
     font-size: 1em;
-    transition: .3s all ease-in-out;
+    transition: .3s background-color ease-in-out;
     cursor: pointer;
 }
 
