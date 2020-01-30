@@ -95,19 +95,19 @@ h1 {
     cursor: pointer;
 }
 
-.green-icon {
+.complete-icon {
     color: green;
 }
 
-.green-icon:hover {
+.complete-icon:hover {
     color: lightgreen;
 }
 
-.red-icon {
+.trash-icon {
     color: darkred;
 }
 
-.red-icon:hover {
+.trash-icon:hover {
     color: red;
 }
 
