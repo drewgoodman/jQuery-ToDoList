@@ -8,33 +8,33 @@
     <title>Master To-Do List</title>
     <link rel="stylesheet" href="styles/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts/todo.js"></script>
 </head>
 
 <body>
     <div class="header">
         <h1 class="header-title">To Do List</h1>
         <div class="header-links">
-            <a href="#">Primary Tasks (0)</a>
-            <a href="#">Completed Tasks (0)</a>
+            <a href="#" id="primary-count">Primary Tasks (0)</a>
+            <a href="#" id="completed-count">Completed Tasks (0)</a>
         </div>
     </div>
     <div class="page-container">
         <div class="space30"></div>
         <div class="todo-input-container">
-            <input type="text" id="todo-input-text" placeholder="New Task">
-            <button id="todo-enter">Add</button>
+            <form id="todo-form">
+                <input type="text" id="todo-input-text" placeholder="New Task">
+                <button type="submit" id="todo-enter">Add</button>
+            </form>
         </div>
         <div class="todo-list-container">
-            <div class="todo-list todo-priority">
+            <div class="todo-list" id="todo-priority">
                 <h3>Tasks to Complete</h3>
-                <div class="task-todo task">Program a dynamic list</div>
-                <div class="task-todo task">Program a dynamic list</div>
+                <!-- <div class="task-todo task">Program a dynamic list</div> -->
             </div>
-            <div class="todo-list todo-completed">
+            <div class="todo-list" id="todo-completed">
                 <h3>Tasks Completed</h3>
-                <div class="task-complete task">Start an HTML page</div>
-                <div class="task-complete task">Start an HTML page</div>
-                <div class="task-complete task">Start an HTML page</div>
+                <!-- <div class="task-complete task">Start an HTML page</div> -->
             </div>
         </div>
     </div>
