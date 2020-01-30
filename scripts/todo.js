@@ -9,15 +9,24 @@ var taskCompletedList = [
     "Create variables"
 ];
 
-
-
-
 $(document).ready(function() {
 
-    function buildTaskItem(taskString) {
+    function buildTaskItem(taskString, complete=false) {
         var taskAdded = document.createElement("div");
+
+        let updateIcon = document.createElement("i");
+        let trashIcon = document.createElement("i");
+        trashIcon.className="fas fa-trash-alt red-icon icon";
+        complete ? (
+            updateIcon.className="fas fa-undo undo-icon icon"
+        ) : (
+            updateIcon.className="fas fa-check-square green-icon icon"
+        );
+
         taskAdded.className = "task-todo task";
+
         taskAdded.innerHTML = taskString;
+        taskAdded.append(taskString, updateIcon, trashIcon)
         return taskAdded;
     }
 
@@ -26,7 +35,7 @@ $(document).ready(function() {
             $("#todo-priority").append(buildTaskItem(taskPrimaryList[task]));
         };
         for (task in taskCompletedList) {
-            $("#todo-completed").append(buildTaskItem(taskCompletedList[task]));
+            $("#todo-completed").append(buildTaskItem(taskCompletedList[task],true));
         };
         updateTaskCount();
     }
@@ -39,11 +48,9 @@ $(document).ready(function() {
     $("#todo-form").submit(function(event) {
         event.preventDefault();
         newTaskText = $("#todo-input-text").val();
-
         taskPrimaryList.unshift(newTaskText);
         $("#todo-priority").first().append(buildTaskItem(newTaskText));
         updateTaskCount();
-
         $("#todo-input-text").val("");
     })
 

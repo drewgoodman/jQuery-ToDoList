@@ -77,4 +77,45 @@ h1 {
     border-radius: 5px;
     background-color: navy;
     padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 30px 30px;
+    grid-column-gap: 10px;
+    transition: .4s all ease-in-out;
+    border: 2px solid transparent;
+
+}
+
+.task:hover {
+    background-color: black;
+}
+
+.icon {
+    font-size: 1em;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
+}
+
+.green-icon {
+    color: green;
+}
+
+.green-icon:hover {
+    color: lightgreen;
+}
+
+.red-icon {
+    color: darkred;
+}
+
+.red-icon:hover {
+    color: red;
+}
+
+
+.undo-icon {
+    color: lightblue;
+}
+
+.undo-icon:hover {
+    color: lightgreen;
 }
