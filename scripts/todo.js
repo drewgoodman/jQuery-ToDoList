@@ -9,7 +9,7 @@ var taskCompletedList = [
     "Create variables"
 ];
 
-function buildTaskItem(taskList, taskID, completed = false) {
+function buildTaskItem(taskList, taskID, completed=false) {
     var taskAdded = document.createElement("div");
     let updateIcon = document.createElement("i");
     let trashIcon = document.createElement("i");
@@ -21,7 +21,6 @@ function buildTaskItem(taskList, taskID, completed = false) {
         updateIcon.className = "fas fa-check-square complete-icon icon"
         taskAdded.setAttribute("status", "active");
     }
-
     taskAdded.className = "task-todo task";
     taskAdded.append(taskList[taskID], updateIcon, trashIcon)
     taskAdded.setAttribute("taskID", taskID);
@@ -31,10 +30,10 @@ function buildTaskItem(taskList, taskID, completed = false) {
 
 function initTaskData() {
     for (task in taskPrimaryList) {
-        $("#todo-priority").append(buildTaskItem(taskPrimaryList, task)).show(300);
+        $("#todo-priority").append(buildTaskItem(taskPrimaryList, task));
     };
     for (task in taskCompletedList) {
-        $("#todo-completed").append(buildTaskItem(taskCompletedList, task, true));
+        $("#todo-completed").append(buildTaskItem(taskCompletedList, task, completed=true));
     };
     updateTaskCount();
 }
@@ -48,11 +47,15 @@ $(document).ready(function () {
 
     $("#todo-form").submit(function (event) {
         event.preventDefault();
+
         newTaskText = $("#todo-input-text").val();
         taskPrimaryList.unshift(newTaskText);
-        $("#todo-priority").children().first().after(buildTaskItem(taskPrimaryList, 0));
-        console.log(taskPrimaryList);
+        var newTask = $(buildTaskItem(taskPrimaryList, 0)).hide();
+        $("#todo-priority").children().first().after(newTask);
+        newTask.show(300);
+
         updateTaskCount();
+
         $("#todo-input-text").val("");
     })
 
@@ -60,6 +63,7 @@ $(document).ready(function () {
         // MUST grab attribute BEFORE being hidden
         let status = $(this).parent().attr("status");
         let taskID = $(this).parent().index() - 1;
+        
         $(this).parent().hide(300, function () {
             if(status==="active") {
                 taskPrimaryList.splice(taskID,1);
