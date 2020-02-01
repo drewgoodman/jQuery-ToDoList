@@ -1,4 +1,3 @@
-
 var taskPrimaryList = [
     "Program a completed To-Do List",
     "Become a jQuery master"
@@ -41,19 +40,26 @@ function updateTaskCount() {
 
 $(document).ready(function () {
 
+    function insertTask(completed = false) {
+        var newTask = $(buildTaskItem(completed ? taskCompletedList: taskPrimaryList, 0, completed)).hide();
+        var taskDiv = completed? $('#todo-completed') : $("#todo-priority")
+        taskDiv.children().first().after(newTask);
+        newTask.show(300);
+    }
+
     $("#todo-form").submit(function (event) {
         event.preventDefault();
 
         newTaskText = $("#todo-input-text").val();
         taskPrimaryList.unshift(newTaskText);
-        var newTask = $(buildTaskItem(taskPrimaryList, 0)).hide();
-        $("#todo-priority").children().first().after(newTask);
-        newTask.show(300);
 
+        insertTask();
         updateTaskCount();
 
         $("#todo-input-text").val("");
     })
+
+
 
     function deleteTask(taskRef) {
         // MUST grab attribute BEFORE being hidden
@@ -62,6 +68,9 @@ $(document).ready(function () {
         console.log(taskID);
 
         taskRef.parent().hide(300, function () {
+            // TODO: Change the system to use child index instead of hardcoding task ID values?
+            // console.log("Index is: ",$(this).index() - 1);
+
             if (status === "active") {
                 taskPrimaryList.splice(taskID, 1);
             } else {
@@ -79,17 +88,24 @@ $(document).ready(function () {
         deleteTask($(this));
     })
 
+    $(document).on('click', '.complete-icon', function () {
+        let completedTaskText = taskPrimaryList[$(this).parent().index() - 1]
+        taskCompletedList.unshift(completedTaskText);
+        insertTask(true);
+
+        deleteTask($(this));
+        updateTaskCount();
+    })
+
 
     initTaskData();
 
 })
 
 
-$(document).on('click', '.complete-icon', function () {
-    alert("Complete this!");
-})
 
 
 $(document).on('click', '.undo-icon', function () {
     alert("Undo this!");
+    updateTaskCount();
 })
