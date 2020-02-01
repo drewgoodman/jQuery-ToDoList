@@ -73,9 +73,7 @@ h1 {
 .task {
     width: 90%;
     margin-left: 2%;
-    color: white;
     border-radius: 5px;
-    background-color: navy;
     padding: 5px;
     display: grid;
     grid-template-columns: 1fr 30px 30px;
@@ -85,14 +83,32 @@ h1 {
 
 }
 
+.task-todo {
+    background-color: navy;
+    color: white;
+}
+
+.task-complete {
+    background-color: lightslategrey;
+    color: lightgray;
+}
+
+.task-complete > .task-text {
+    text-decoration: line-through;
+}
+
 .task:hover {
     background-color: black;
 }
 
 .icon {
     font-size: 1em;
-    transition: .3s background-color ease-in-out;
+    transition: .3s all ease-in-out;
     cursor: pointer;
+}
+
+.icon:hover {
+    font-size: 1.1em;
 }
 
 .complete-icon {
@@ -110,7 +126,6 @@ h1 {
 .trash-icon:hover {
     color: red;
 }
-
 
 .undo-icon {
     color: lightblue;
