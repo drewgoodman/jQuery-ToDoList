@@ -65,10 +65,9 @@ $(document).ready(function () {
         // MUST grab attribute BEFORE being hidden
         let status = taskRef.parent().attr("status");
         let taskID = taskRef.parent().index() - 1;
-        console.log(taskID);
 
         taskRef.parent().hide(300, function () {
-            // TODO: Change the system to use child index instead of hardcoding task ID values?
+            // TODO: Maybe change the system to use child index instead of hardcoding task ID values?
             // console.log("Index is: ",$(this).index() - 1);
 
             if (status === "active") {
@@ -78,8 +77,8 @@ $(document).ready(function () {
             }
             ($(this)).remove();
             updateTaskCount();
-            console.log(taskPrimaryList);
-            console.log(taskCompletedList);
+            // console.log(taskPrimaryList);
+            // console.log(taskCompletedList);
         });
 
     }
@@ -89,7 +88,7 @@ $(document).ready(function () {
     })
 
     $(document).on('click', '.complete-icon', function () {
-        let completedTaskText = taskPrimaryList[$(this).parent().index() - 1]
+        let completedTaskText = taskPrimaryList[$(this).parent().index() - 1];
         taskCompletedList.unshift(completedTaskText);
         insertTask(true);
 
@@ -98,14 +97,17 @@ $(document).ready(function () {
     })
 
 
+    $(document).on('click', '.undo-icon', function () {
+        let updatedTaskText = taskCompletedList[$(this).parent().index() -1];
+        taskPrimaryList.unshift(updatedTaskText);
+
+        insertTask();
+        deleteTask($(this));
+        updateTaskCount();
+    })
+
     initTaskData();
 
 })
 
 
-
-
-$(document).on('click', '.undo-icon', function () {
-    alert("Undo this!");
-    updateTaskCount();
-})
