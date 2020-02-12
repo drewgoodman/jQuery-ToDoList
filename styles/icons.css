@@ -1,0 +1,33 @@
+.icon {
+    font-size: 1em;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
+}
+
+.icon:hover {
+    font-size: 1.1em;
+}
+
+.complete-icon {
+    color: green;
+}
+
+.complete-icon:hover {
+    color: lightgreen;
+}
+
+.trash-icon {
+    color: darkred;
+}
+
+.trash-icon:hover {
+    color: red;
+}
+
+.undo-icon {
+    color: lightblue;
+}
+
+.undo-icon:hover {
+    color: lightgreen;
+}

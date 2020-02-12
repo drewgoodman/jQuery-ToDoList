@@ -6,29 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Master To-Do List</title>
-    <link rel="stylesheet" href="styles/body.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/d58eb19ed0.js"></script>
     <script src="scripts/todo.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/body.css">
+    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/media.css">
 </head>
 
 <body>
     <div class="header">
         <h1 class="header-title">To Do List</h1>
         <div class="header-links">
-            <a href="#" id="primary-count">Primary Tasks (0)</a>
-            <a href="#" id="completed-count">Completed Tasks (0)</a>
+            <a href="#todo-priority" id="primary-count">Primary Tasks (0)</a>
+            <a href="#todo-completed" id="completed-count">Completed Tasks (0)</a>
         </div>
     </div>
+    <div class="space30"></div>
     <div class="page-container">
+        <div class="todo-directions">
+            <ul>
+                <li>Sample Task List App with jQuery</li>
+                <li>Enter tasks in the form below.</li>
+                <li>Press the checkmark to move tasks to the Completed Tab.</li>
+                <li>Press the trash can to delete a task completely.</li>
+            </ul>
+        </div>
         <div class="space30"></div>
         <div class="todo-input-container">
             <form id="todo-form">
-                <input type="text" id="todo-input-text" placeholder="New Task">
+                <input type="text" id="todo-input-text" placeholder="New Task (max length 36)" maxlength="36">
                 <button type="submit" id="todo-enter">Add</button>
                 
             </form>
         </div>
+        <div class="space30"></div>
         <div class="todo-list-container">
             <div class="todo-list" id="todo-priority">
                 <h3>Tasks to Complete</h3>
@@ -36,6 +49,11 @@
             <div class="todo-list" id="todo-completed">
                 <h3>Tasks Completed</h3>
             </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer-copyright">
+            &copy; 2020 Drew Goodman &#124; All rights reserved
         </div>
     </div>
 </body>

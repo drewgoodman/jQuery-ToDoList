@@ -4,6 +4,8 @@ body {
     flex-direction: column;
     margin: 0px;
     width: 100%;
+    font-family: 'Playfair Display', serif;
+
 }
 
 h1 {
@@ -22,10 +24,15 @@ h1 {
 
 .page-container {
     width: 800px;
+    min-height: calc(100vh - 186px);
 }
 
 .space30 {
     height: 30px;
+}
+
+.space60 {
+    height: 60px;
 }
 
 .header-title {
@@ -50,14 +57,39 @@ h1 {
     color: white;
 }
 
+.todo-directions {
+    font-family: 'Work Sans', sans-serif;
+}
 
 #todo-input-text {
+    height: 25px;
+    border-radius: 5px;
+    border: 3px solid navy;
     width: 80%;
+    padding-left: 15px;
+}
+
+#todo-input-text::placeholder {
+    color: #999;
+}
+
+#todo-enter {
+    background-color: #333;
+    height: 33px;
+    width: 100px;
+    color: white;
+    font-weight: 800;
+    border-radius: 5px;
+}
+
+.todo-list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    
 }
 
 .todo-list {
-    display: grid;
-    grid-gap: 5px;
 }
 
 .todo-list h3 {
@@ -68,10 +100,13 @@ h1 {
     border: 3px solid black;
     border-radius: 5px;
     text-transform: uppercase;
+    height: 20px;
 }
 
 .task {
+    margin-top: 5px;
     width: 90%;
+    height: 25px;
     margin-left: 2%;
     border-radius: 5px;
     padding: 5px;
@@ -101,40 +136,18 @@ h1 {
     background-color: black;
 }
 
-.icon {
-    font-size: 1em;
-    transition: .3s all ease-in-out;
-    cursor: pointer;
-}
-
-.icon:hover {
-    font-size: 1.1em;
-}
-
-.complete-icon {
-    color: green;
-}
-
-.complete-icon:hover {
-    color: lightgreen;
-}
-
-.trash-icon {
-    color: darkred;
-}
-
-.trash-icon:hover {
-    color: red;
-}
-
-.undo-icon {
-    color: lightblue;
-}
-
-.undo-icon:hover {
-    color: lightgreen;
-}
 
 .new-task {
     display: none;
+}
+
+
+.footer-wrapper {
+    width: 100%;
+    background-color: #333;
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

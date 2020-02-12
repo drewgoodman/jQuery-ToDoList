@@ -2,10 +2,13 @@ var taskPrimaryList = [
     "Program a completed To-Do List",
     "Become a jQuery master"
 ];
-var taskCompletedList = [
-    "Learn basic jQuery",
+var taskCompletedList = [,
+    "Build completion and undo functions",
+    "Test and debug task list changes",
+    "Build a form to add tasks",
+    "Create variables",
     "Start an HTML page",
-    "Create variables"
+    "Learn basic jQuery"
 ];
 
 function buildTaskItem(taskList, taskID, completed = false) {
@@ -47,22 +50,8 @@ $(document).ready(function () {
         newTask.show(300);
     }
 
-    $("#todo-form").submit(function (event) {
-        event.preventDefault();
-
-        newTaskText = $("#todo-input-text").val();
-        taskPrimaryList.unshift(newTaskText);
-
-        insertTask();
-        updateTaskCount();
-
-        $("#todo-input-text").val("");
-    })
-
-
 
     function deleteTask(taskRef) {
-        // MUST grab attribute BEFORE being hidden
         let status = taskRef.parent().attr("status");
         let taskID = taskRef.parent().index() - 1;
 
@@ -77,33 +66,46 @@ $(document).ready(function () {
             }
             ($(this)).remove();
             updateTaskCount();
-            // console.log(taskPrimaryList);
-            // console.log(taskCompletedList);
         });
-
     }
+
+
+    function shiftTask(taskRef, complete) {
+        insertTask(complete);
+        deleteTask(taskRef);
+        updateTaskCount();
+    }
+
+
+    $("#todo-form").submit(function (event) {
+        event.preventDefault();
+
+        newTaskText = $("#todo-input-text").val();
+        taskPrimaryList.unshift(newTaskText);
+
+        insertTask();
+        updateTaskCount();
+
+        $("#todo-input-text").val("");
+    })
+
 
     $(document).on('click', '.trash-icon', function () {
         deleteTask($(this));
     })
 
+
     $(document).on('click', '.complete-icon', function () {
         let completedTaskText = taskPrimaryList[$(this).parent().index() - 1];
         taskCompletedList.unshift(completedTaskText);
-        insertTask(true);
-
-        deleteTask($(this));
-        updateTaskCount();
+        shiftTask($(this), true);
     })
 
 
     $(document).on('click', '.undo-icon', function () {
         let updatedTaskText = taskCompletedList[$(this).parent().index() -1];
         taskPrimaryList.unshift(updatedTaskText);
-
-        insertTask();
-        deleteTask($(this));
-        updateTaskCount();
+        shiftTask($(this), false);
     })
 
     initTaskData();
