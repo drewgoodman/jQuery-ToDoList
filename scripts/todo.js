@@ -118,7 +118,7 @@ $(document).ready(function () {
     })
 
     $('.scroll-to-top').click(function() {
-        $('html, body').animation({scrollTop: 0}, 800);
+        $('html, body').animate({scrollTop: 0}, 600);
         return false;
     })
 

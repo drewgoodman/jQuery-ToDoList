@@ -45,7 +45,9 @@
     border-radius: 50%;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
     text-decoration: none;
     display: none;
+    /* animation: .3s background-color ease-in-out; */
 }
