@@ -61,11 +61,17 @@ h1 {
     font-family: 'Work Sans', sans-serif;
 }
 
+#todo-form {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10px;
+}
+
 #todo-input-text {
     height: 25px;
     border-radius: 5px;
     border: 3px solid navy;
-    width: 80%;
+    width: auto;
     padding-left: 15px;
 }
 
@@ -76,7 +82,7 @@ h1 {
 #todo-enter {
     background-color: #333;
     height: 33px;
-    width: 100px;
+    width: 100%;
     color: white;
     font-weight: 800;
     border-radius: 5px;
@@ -89,32 +95,34 @@ h1 {
     
 }
 
-.todo-list {
-}
-
 .todo-list h3 {
     background-color: gray;
     color: white;
     padding: 10px;
     padding-left: 20px;
-    border: 3px solid black;
+    border: 3px solid #333;
     border-radius: 5px;
     text-transform: uppercase;
     height: 20px;
+
+    
 }
 
 .task {
     margin-top: 5px;
-    width: 90%;
-    height: 25px;
+    max-width: 100%;
+    min-height: 25px;
     margin-left: 2%;
     border-radius: 5px;
     padding: 5px;
     display: grid;
-    grid-template-columns: 1fr 30px 30px;
+    grid-template-columns: minmax(0,1fr) 30px 30px;
     grid-column-gap: 10px;
     /* transition: .3s background-color ease-in-out; */
     border: 2px solid transparent;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
 }
 
