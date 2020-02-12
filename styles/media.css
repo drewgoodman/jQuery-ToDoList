@@ -13,6 +13,30 @@
         grid-template-columns: 1fr
     }
 
+    .header {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .header-title {
+        margin-left: 15px;
+    }
+
+    .header-links {
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        font-size: 85%;
+    }
+
+    .todo-directions {
+        font-size: 80%;
+    }
+
+    .footer {
+        font-size: 90%;
+    }
+
 
 
 }
