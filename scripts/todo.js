@@ -3,6 +3,8 @@ var taskPrimaryList = [
     "Become a jQuery master"
 ];
 var taskCompletedList = [,
+    "Add function for other flash messages",
+    "Add flash notifications for input errors",
     "Add a background image",
     "Create a scroll to top button",
     "Deploy live version",
@@ -81,21 +83,35 @@ $(document).ready(function () {
     }
 
 
+    function showFlashMessage(flashText, flashType) {
+        $('#todo-flash').removeClass('flash-success flash-warning').hide();
+        $('#todo-flash-msg').text(flashText)
+        $('#todo-flash').addClass(`flash-${flashType}`).fadeIn(500);
+    }
+
+
     $("#todo-form").submit(function (event) {
         event.preventDefault();
 
-        newTaskText = $("#todo-input-text").val();
-        taskPrimaryList.unshift(newTaskText);
+        if($("#todo-input-text").val().length > 4) {
+            newTaskText = $("#todo-input-text").val();
+            taskPrimaryList.unshift(newTaskText);
+    
+            insertTask();
+            updateTaskCount();
+            showFlashMessage("Task successfully added.", "success");
+    
+            $("#todo-input-text").val("");
 
-        insertTask();
-        updateTaskCount();
-
-        $("#todo-input-text").val("");
+        } else {
+            showFlashMessage("Task must be at least 4 characters long.", "warning");
+        }
     })
 
 
     $(document).on('click', '.trash-icon', function () {
         deleteTask($(this));
+        showFlashMessage("Task successfully deleted.", "success");
     })
 
 
@@ -103,6 +119,7 @@ $(document).ready(function () {
         let completedTaskText = taskPrimaryList[$(this).parent().index() - 1];
         taskCompletedList.unshift(completedTaskText);
         shiftTask($(this), true);
+        showFlashMessage("Task completed.", "success");
     })
 
 
@@ -110,6 +127,7 @@ $(document).ready(function () {
         let updatedTaskText = taskCompletedList[$(this).parent().index() -1];
         taskPrimaryList.unshift(updatedTaskText);
         shiftTask($(this), false);
+        showFlashMessage("Task successfully re-added.", "success");
     })
 
 
@@ -126,7 +144,13 @@ $(document).ready(function () {
         return false;
     })
 
+    $('#todo-flash-close').click(function() {
+        $('#todo-flash').fadeOut(500);
+        return false;
+    })
 
+
+    $('#todo-flash').hide();
     initTaskData();
 
 })

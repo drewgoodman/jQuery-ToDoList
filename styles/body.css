@@ -82,6 +82,39 @@ h1 {
     margin: 0;
 }
 
+.todo-flash-space {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 22px;
+}
+
+#todo-flash {
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+}
+
+.flash-warning {
+    background-color: rgba(200,0,0,0.7);
+
+}
+
+.flash-success {
+    background-color: rgba(0,200,0,0.7);
+}
+
+#todo-flash-msg {
+    font-size: 75%;
+    padding-left: 15px;
+}
+
+#todo-flash-close {
+    cursor: pointer;
+}
+
 #todo-form {
     display: grid;
     grid-template-columns: 4fr 1fr;
