@@ -2,7 +2,7 @@ var taskPrimaryList = [
     "Program a completed To-Do List",
     "Become a jQuery master"
 ];
-var taskCompletedList = [,
+var taskCompletedList = [
     "Add function for other flash messages",
     "Add flash notifications for input errors",
     "Add a background image",
@@ -89,6 +89,10 @@ $(document).ready(function () {
         $('#todo-flash').addClass(`flash-${flashType}`).fadeIn(500);
     }
 
+    function scrollToFlash() {
+        $('html, body').animate({scrollTop: $("#todo-flash").offset().top}, 400);
+    }
+
 
     $("#todo-form").submit(function (event) {
         event.preventDefault();
@@ -120,6 +124,7 @@ $(document).ready(function () {
         taskCompletedList.unshift(completedTaskText);
         shiftTask($(this), true);
         showFlashMessage("Task completed.", "success");
+        scrollToFlash();
     })
 
 
@@ -128,6 +133,7 @@ $(document).ready(function () {
         taskPrimaryList.unshift(updatedTaskText);
         shiftTask($(this), false);
         showFlashMessage("Task successfully re-added.", "success");
+        scrollToFlash();
     })
 
 
