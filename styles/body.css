@@ -13,6 +13,20 @@ h1 {
     text-transform: uppercase;
 }
 
+.bg-image {
+    background: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    filter: blur(5px) grayscale();
+    z-index: -1;
+}
+
 .header {
     width: 100%;
     display: grid;
@@ -24,7 +38,7 @@ h1 {
 
 .page-container {
     width: 800px;
-    min-height: calc(100vh - 186px);
+    min-height: calc(100vh - 156px);
 }
 
 .space30 {
@@ -44,7 +58,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-=
 }
 
 .header-links a {
@@ -59,6 +72,14 @@ h1 {
 
 .todo-directions {
     font-family: 'Work Sans', sans-serif;
+    background-color: rgba(255,255,255,0.6);
+    padding: 5px;
+    padding-right: 20px;
+    border-radius: 5px;
+}
+
+.todo-directions li {
+    margin: 0;
 }
 
 #todo-form {

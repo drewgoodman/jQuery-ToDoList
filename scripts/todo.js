@@ -3,6 +3,10 @@ var taskPrimaryList = [
     "Become a jQuery master"
 ];
 var taskCompletedList = [,
+    "Add a background image",
+    "Create a scroll to top button",
+    "Deploy live version",
+    "Create media queries for a mobile look",
     "Build completion and undo functions",
     "Test and debug task list changes",
     "Build a form to add tasks",
